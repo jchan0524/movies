@@ -7,6 +7,7 @@ import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Producer from "./pages/Producer";
 import Header from "./Components/Header";
+import Stage from "./pages/Stage";
 
 export const LoginContext = createContext();
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/production" element={<Producer />} />
+          <Route path ='/stage' element={<Stage/>} />
         </Routes>
 
         {/* </Header> */}

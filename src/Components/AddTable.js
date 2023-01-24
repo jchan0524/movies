@@ -1,13 +1,24 @@
-import { useState } from "react";
-import { Table, Card } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Table, Card, NavItem } from "react-bootstrap";
 
 export default function AddTable(props) {
-  const [date, setDate] = useState(props.date);
-  const [amount, setAmount] = useState(props.amount); 
-  const [loan, setLoan] = useState(props.loan); 
-  const [balance, setBalance] = useState(props.balance); 
+  const [money, setMoney] = useState(props);
 
+  const [date, setDate] = useState("");
+  const [id, setId] = useState("");
+  const [amount, setAmount] = useState("");
+  const [loan, setLoan] = useState("");
+  const [balance, setBalance] = useState("");
 
+  
+
+  function updateTable(id, date, amount, loan, balance) {
+    setId(id);
+    setAmount(amount);
+    setDate(date);
+    setLoan(loan);
+    setBalance(balance);
+  }
 
   return (
     <Card className="w-100">
@@ -20,19 +31,18 @@ export default function AddTable(props) {
             <th>Balance</th>
           </tr>
         </thead>
+
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
+          {money.money.map((data) => {
+            return (
+              <tr key={data.key}>
+                <td>{data.date}</td>
+                <td>{data.amount.toLocaleString("en-US")}</td>
+                <td>{data.loan.toLocaleString("en-US")}</td>
+                <td>{data.balance.toLocaleString("en-US")}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
     </Card>

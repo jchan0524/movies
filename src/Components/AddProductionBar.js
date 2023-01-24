@@ -1,4 +1,4 @@
-import { ProgressBar, Col, Row, Button, Container } from "react-bootstrap";
+import { ProgressBar, Col, Row, Button, Container, Card } from "react-bootstrap";
 import { useState, react, useEffect } from "react";
 
 export default function AddProductionBar(props) {
@@ -34,16 +34,18 @@ export default function AddProductionBar(props) {
     <>
       <h1>{props.name} Productions </h1>
       <Container fluid>
+        <Card className="pr-10 pl-5">
         <Row className>
           <Col>
             <div className="text-start">Amount Borrowed / Drawdowns</div>
 
             <div className="text-end">
               {borrowed
-                ? borrowed + " (of " + total + ")"
+                ? borrowed + " (of " + total+ ")"
                 : null
-                ? total
+                ? total.toLocaleString("en-US")
                 : null}{" "}
+               
             </div>
 
             <ProgressBar
@@ -73,7 +75,11 @@ export default function AddProductionBar(props) {
               />
             </Col>
 
-            <Button
+            
+          </Col>
+        </Row>
+        </Card>
+        <Button
               variant="primary"
               disabled={isLoading}
               size="md"
@@ -82,8 +88,6 @@ export default function AddProductionBar(props) {
             >
               {isLoading ? "Loading…" : "Make a Payment"}
             </Button>
-          </Col>
-        </Row>
       </Container>
     </>
   );
