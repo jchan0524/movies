@@ -81,7 +81,7 @@ export default function Producer() {
 
   return (
     <>
-      <Header />
+      
       <div>
         <p>Producer Dashboard</p>
       </div>

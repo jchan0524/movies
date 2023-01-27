@@ -76,22 +76,28 @@ export default function EditLogin(props) {
                   </form>
                 </div>
                 {/*footer*/}
-                <div className="flex items-center justify- p-6 border-t border-solid border-slate-200 rounded-b">
-                  <button
+                <div className=" d-flex p-3 border-solid border-slate-200">
+                <button className="align-middle text-slate-300 justify-content-center text-center h-5 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+                    Forgot Password?
+                  </button>
+                  {/* <button
                     className=" justify-end text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
                     Close
-                  </button>
+                  </button> */}
                   <button
-                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="justify-content-end bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
                     Login
                   </button>
+                 
                 </div>
+
+                
                 <div className="ml-12">
                   New User?{" "}
                   <button className=" items-center  justify-center text-blue-300 background-transparent h-20  font-bold uppercase h-30 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
