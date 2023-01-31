@@ -2,12 +2,12 @@ import { Card, ProgressBar, Row, Col } from "react-bootstrap";
 
 export default function ProductionAssets(props) {
   return (
-    <Card>
+    <Card className="pt-4">
       <Card.Title className="text-center fw-bold">
         {" "}
         Production Assets
       </Card.Title>
-      <Card.Subtitle>PICTURE</Card.Subtitle>
+      <Card.Subtitle className="text-center">PICTURE</Card.Subtitle>
 
       <Card.Body>
         <div className="">

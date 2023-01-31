@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+
 import { ProgressBar, Row, Card, Table, Col, Container } from "react-bootstrap";
 
 export default function InvestorDashboard() {
@@ -9,9 +9,9 @@ export default function InvestorDashboard() {
       TotalLoan: 8000000,
       DateOfFunding: "18 Apr 2022",
       Term: "12 months",
-      InterestRate: '12.5%',
+      InterestRate: "12.5%",
       InterestDue: "18 Apr 2023",
-      Progress: '75%',
+      Progress: "75%",
       Risk: "Low",
     },
     {
@@ -20,9 +20,9 @@ export default function InvestorDashboard() {
       TotalLoan: 3000000,
       DateOfFunding: "18 Apr 2022",
       Term: "12 months",
-      InterestRate: '12%',
+      InterestRate: "12%",
       InterestDue: "18 Apr 2023",
-      Progress: '28%',
+      Progress: "28%",
       Risk: "High",
     },
     {
@@ -31,9 +31,9 @@ export default function InvestorDashboard() {
       TotalLoan: 2800000,
       DateOfFunding: "20 May 2022",
       Term: "12 months",
-      InterestRate: '12%',
+      InterestRate: "12%",
       InterestDue: "20 May 2023",
-      Progress: '90%',
+      Progress: "90%",
       Risk: "Medium",
     },
     {
@@ -42,9 +42,9 @@ export default function InvestorDashboard() {
       TotalLoan: 3000000,
       DateOfFunding: "12 Jul 2022",
       Term: "9 months",
-      InterestRate: '20%',
+      InterestRate: "20%",
       InterestDue: "12 Apr 2023",
-      Progress: '50%',
+      Progress: "50%",
       Risk: "Low",
     },
     {
@@ -53,9 +53,9 @@ export default function InvestorDashboard() {
       TotalLoan: 1500000,
       DateOfFunding: "12 Jul 2022",
       Term: "9 months",
-      InterestRate: '13%',
+      InterestRate: "13%",
       InterestDue: "12 Apr 2023",
-      Progress: '50%',
+      Progress: "50%",
       Risk: "Low",
     },
     {
@@ -64,28 +64,21 @@ export default function InvestorDashboard() {
       TotalLoan: 10000000,
       DateOfFunding: "12 Jul 2022",
       Term: "9 months",
-      InterestRate: '5%',
+      InterestRate: "5%",
       InterestDue: "12 Apr 2023",
-      Progress: '50%',
+      Progress: "50%",
       Risk: "Low",
     },
   ];
-  console.log("hello", investorData.length);
-  const [key, setKey] = useState({});
-  const [val, setVal] = useState({});
-
-  function a() {
-    investorData.map((data, index) => {
-      console.log("boo", data);
-      console.log("eyes", Object.values(data));
-      Object.values(data).map((data) => {
-        console.log(data);
-      });
-    });
-  }
 
   return (
     <>
+      <style type="text/css">
+        {`
+    .bg-teal {
+        background-color: #0dcaf0!important;
+    `}
+      </style>
       <Container fluid>
         <Row>
           <p>Investor Dashboard</p>
@@ -99,23 +92,25 @@ export default function InvestorDashboard() {
               <p>Committed Capital / Dropdowns</p>
             </Col>
             <Col>
-              <p className="text-end">40000000 (of $50000000)</p>
+              <p className="text-end">$40,000,000 (of $50,000,000)</p>
             </Col>
-
-            <ProgressBar className=" " now={80} />
           </Row>
+
+          <ProgressBar variant="teal" now={80} />
+          {/* <Row> */}
         </Card>
+
         <Card className="mt-3 p-4">
           <Row>
             <Col>
               <p>Amount Dashboard</p>
             </Col>
             <Col>
-              <p className="text-end">30500000 (of $50000000)</p>
+              <p className="text-end">$30,500,000 (of $50,000,000)</p>
             </Col>
-
-            <ProgressBar className=" " now={61} />
           </Row>
+
+          <ProgressBar variant="teal" className=" " now={61} />
         </Card>
         <Card className="mt-3 p-4">
           <Row>
@@ -123,40 +118,41 @@ export default function InvestorDashboard() {
               <p>Earning YTD</p>
             </Col>
             <Col>
-              <p className="text-end">25000000</p>
+              <p className="text-end">$25,000,000</p>
             </Col>
-
-            <ProgressBar className=" " now={50} />
           </Row>
+
+          <ProgressBar variant="teal" className="" now={50} />
         </Card>
       </Container>
       <Container fluid className="mt-3">
         <div>
-      <Card>
-        <Table>
-          <thead>
-            <tr>
-              {Object.keys(investorData[0]).map((data) => {
-                return <th>{data}</th>;
-              })}
-            </tr>
-          </thead>
+          <Card>
+            <Table>
+              <thead>
+                <tr>
+                  {Object.keys(investorData[0]).map((data) => {
+                    return (
+                      <th>{data.match(/[A-Z][a-z]+|[0-9]+/g).join(" ")}</th>
+                    );
+                  })}
+                </tr>
+              </thead>
 
-          <tbody>
-            {investorData.map((data) => {
-              console.log("boo", data);
-
-              console.log("eyes", Object.values(data));
-
-              let c = Object.values(data).map((i) => {
-                return <td>{i}</td>;
-              });
-              return <tr>{c}</tr>;
-            })}
-          </tbody>
-        </Table>
-      </Card>
-      </div>
+              <tbody>
+                {investorData.map((data) => {
+                  let c = Object.values(data).map((i) => {
+                    if (Number.isInteger(i)) {
+                      return <td>{"$" + i.toLocaleString("en-US")}</td>;
+                    }
+                    return <td>{i}</td>;
+                  });
+                  return <tr>{c}</tr>;
+                })}
+              </tbody>
+            </Table>
+          </Card>
+        </div>
       </Container>
     </>
   );

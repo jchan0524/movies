@@ -1,5 +1,12 @@
-import { ProgressBar, Col, Row, Button, Container, Card } from "react-bootstrap";
-import { useState, react, useEffect } from "react";
+import {
+  ProgressBar,
+  Col,
+  Row,
+  Button,
+  Container,
+  Card,
+} from "react-bootstrap";
+import { useState, useEffect } from "react";
 
 export default function AddProductionBar(props) {
   const [borrowed, setBorrowed] = useState(props.borrowed);
@@ -33,61 +40,60 @@ export default function AddProductionBar(props) {
   return (
     <>
       <h1>{props.name} Productions </h1>
-      <Container fluid>
-        <Card className="pr-10 pl-5">
-        <Row className>
+      <Container>
+        <Row>
           <Col>
-            <div className="text-start">Amount Borrowed / Drawdowns</div>
+            <Card className="pr-10 pl-5 pt-3 pb-3 pl-5">
+              <div className="text-start">Amount Borrowed / Drawdowns</div>
 
-            <div className="text-end">
-              {borrowed
-                ? borrowed + " (of " + total+ ")"
-                : null
-                ? total.toLocaleString("en-US")
-                : null}{" "}
-               
-            </div>
-
-            <ProgressBar
-              className="mb-2 background-white"
-              animated
-              now={computeAverage(borrowed, total)}
-            />
-
-            <div className="text-start">Amount Outstanding</div>
-            <div className="text-end">
-              {outstanding + " (of " + total + ")"}
-            </div>
-            <ProgressBar
-              className="mb-2"
-              animated
-              now={computeAverage(outstanding, total)}
-            />
-            <Col>
-              <div className="text-start">Culmulative Payments</div>
               <div className="text-end">
-                {culmulative + " (of " + total + ")"}
+                {borrowed
+                  ? borrowed + " (of " + total + ")"
+                  : null
+                  ? total.toLocaleString("en-US")
+                  : null}{" "}
+              </div>
+
+              <ProgressBar
+                className="mb-2"
+                now={computeAverage(borrowed, total)}
+              />
+            </Card>
+
+            <Card className="pr-10 mt-2 pl-5 pt-3 pb-3 pl-5">
+              <div className="text-start">Amount Outstanding</div>
+              <div className="text-end">
+                {outstanding + " (of " + total + ")"}
               </div>
               <ProgressBar
                 className="mb-2"
-                animated
-                now={computeAverage(culmulative, total)}
+                now={computeAverage(outstanding, total)}
               />
-            </Col>
-
-            
+            </Card>
+            <Card className="pr-10 mt-2 pl-5 pt-3 pb-3 pl-5">
+              <Col>
+                <div className="text-start">Culmulative Payments</div>
+                <div className="text-end">
+                  {culmulative + " (of " + total + ")"}
+                </div>
+                <ProgressBar
+                  className="mb-2"
+                  now={computeAverage(culmulative, total)}
+                />
+              </Col>
+            </Card>
           </Col>
         </Row>
-        </Card>
+        {/* </Card> */}
         <Button
-              variant="primary"
-              disabled={isLoading}
-              size="md"
-              className="d-grid gap-2 p-200 w-100 mt-8"
-              onClick={!isLoading ? handleClick : null}
-            >
-              {isLoading ? "Loading…" : "Make a Payment"}
-            </Button>
+          variant="primary"
+          disabled={isLoading}
+          size="lg"
+          className="w-100 mt-8"
+          onClick={!isLoading ? handleClick : null}
+        >
+          {isLoading ? "Loading…" : "Make a Payment"}
+        </Button>
       </Container>
     </>
   );

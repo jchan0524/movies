@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ProgressBar, Card } from "react-bootstrap";
+import { ProgressBar } from "react-bootstrap";
 import React from "react";
 
 export default function AddProgressBar(props) {
@@ -34,16 +34,16 @@ export default function AddProgressBar(props) {
 
     setNumber(props.props[0].num);
     updateProgress(props.props[0].num);
-  }, [number]);
+  },[props.props, updateProgress]);
 
   return (
     <ProgressBar>
       {progress[0] ? (
-        <ProgressBar striped variant="danger" now={number} key={3} />
+        <ProgressBar variant="danger" now={number} key={3} />
       ) : progress[1] ? (
         <ProgressBar variant="warning" now={number} key={2} />
       ) : (
-        <ProgressBar striped variant="success" now={number} key={1} />
+        <ProgressBar variant="success" now={number} key={1} />
       )}
     </ProgressBar>
   );

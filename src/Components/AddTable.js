@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
-import { Table, Card, NavItem } from "react-bootstrap";
+import {  useState } from "react";
+import { Table, Card } from "react-bootstrap";
 
 export default function AddTable(props) {
-  const [money, setMoney] = useState(props);
+  const [money] = useState(props);
 
-  const [date, setDate] = useState("");
-  const [id, setId] = useState("");
-  const [amount, setAmount] = useState("");
-  const [loan, setLoan] = useState("");
-  const [balance, setBalance] = useState("");
-
-  
+  const [, setDate] = useState("");
+  const [, setId] = useState("");
+  const [, setAmount] = useState("");
+  const [, setLoan] = useState("");
+  const [, setBalance] = useState("");
 
   function updateTable(id, date, amount, loan, balance) {
     setId(id);
@@ -21,7 +19,7 @@ export default function AddTable(props) {
   }
 
   return (
-    <Card className="w-100">
+    <Card className="pl-5 pr-10 pb-3 pt-3">
       <Table borderless>
         <thead>
           <tr>

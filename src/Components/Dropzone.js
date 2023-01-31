@@ -14,11 +14,9 @@ export default function Dropzone({ open }) {
     <div className="container">
       <div {...getRootProps({ className: "dropzone" })}>
         <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here</p>
       </div>
       <aside>
         <ul>{files}</ul>
-        
       </aside>
     </div>
   );
